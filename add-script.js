@@ -12,7 +12,7 @@ jQuery(function($) {
             "master_table_json": formBuilder.formData
         }
         console.log(data);
-        commonAjax('s.php', 'POST', data, '', '', '', { "functionName": "success" }, { "functionName": "error" })
+        commonAjax('database.php', 'POST', data, '', '', '', { "functionName": "success" }, { "functionName": "error" })
     });
 
     if (getParameter('id')) {
