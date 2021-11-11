@@ -11,7 +11,6 @@ jQuery(function($) {
             "created_by": "1",
             "master_table_json": formBuilder.formData
         }
-        console.log(data);
         commonAjax('services.php', 'POST', data, '', '', '', { "functionName": "success" }, { "functionName": "error" })
     });
 
