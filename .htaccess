@@ -1,1 +1,0 @@
-https://www.chillbreezeyercaud.com/ RewriteEngine On RewriteCond %{SERVER_PORT} 80 RewriteRule ^(.*)$ https://chillbreezeyercaud.com/$1 [R,L] (OR) http to https:// with www ******************* RewriteEngine On RewriteCond %{SERVER_PORT} 80 RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [R,L] Regards
