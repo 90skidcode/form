@@ -38,8 +38,7 @@ function displayList(params) {
         dataType: 'json'
     };
     formBuilder = $(fbEditor).formBuilder(options);
-    $(".table_name").val(params[0].master_table_name.replace(/eks_/gi, ''));
-    $(".form_name").val(params[0].master_form_name);
+    $(".table_name").val(params[0].master_table_name);
     $(".company").val(params[0].company_id);
 }
 
@@ -67,79 +66,29 @@ $('table.display.dataTable th.editable.cloumnshow').each(function() {
 function simpleInsert() {
     let data = {
         "list_key": "AddTable",
-        "master_table_name": removeSpacenumber("Coolant Filtrration", 9),
-        "master_form_name": "Coolant Filtrration",
-        "company_id": '9',
+        "master_table_name": "filtration_machine_running_5",
+        "master_form_name": "Filtration Machine Running",
+        "company_id": '5',
         "created_by": "1",
         "master_table_json": ''
     }
 
     data['master_table_json'] = JSON.stringify(
         [
-            short('date', 'Date'),
-            short('textarea', 'Bay/Cell', 'bay_cell'),
-            short('textarea', 'Machine Name'),
-            short('text', 'Done')
+            { "type": "textarea", "required": true, "label": "Filtration Mc No", "name": "filteration_mc" },
+            { "type": "date", "required": true, "label": "Date", "name": "date" },
+            { "type": "text", "required": true, "label": "Ma", "name": "ma" },
+            { "type": "text", "required": true, "label": "KV", "name": "kv" },
+            { "type": "text", "required": true, "label": "Hrs", "name": "hrs" },
+            { "type": "textarea", "required": true, "label": "Machine Name", "name": "machine_name" },
+            { "type": "text", "required": true, "label": "Fixed/Shunting", "name": "fixedshunting" },
+            { "type": "text", "required": true, "label": "Remarks", "name": "remarks" },
+
         ]
     );
-    console.log(data);
     commonAjax('services.php', 'POST', data, '', '', '', { "functionName": "success" }, { "functionName": "error" })
 }
 
-
-short('date', 'Date')
-short('textarea', 'Bay/Cell', 'bay_cell')
-short('textarea', 'Machine Name')
-short('text', 'Qty (Ltr)', 'qty')
-short('text', 'Remarks')
-
-short('textarea', 'Oil Grade')
-
-function short(type, label, name) {
-    let n = '';
-    (!name) ? n = removeSpace(label): n = name;
-    return { "type": type, "required": true, "label": label, "name": n }
-}
-
-function removeSpace(params) {
-    if (typeof(params) != 'undefined') {
-        let r = params.replace(/ /g, '_');
-        r = r.replaceAll("[^a-zA-Z0-9]", " ");
-        return r.toLowerCase();
-    } else
-        return '';
-
-}
-
-function removeSpacenumber(params, n) {
-    if (typeof(params) != 'undefined') {
-        let r = params.replace(/ /g, '_');
-        r = r.replaceAll("[^a-zA-Z0-9]", " ");
-        return r.toLowerCase() + "_" + n;
-    } else
-        return '';
-}
-
-let radio = {
-    "type": "radio-group",
-    "required": false,
-    "label": "Abnormality",
-    "inline": false,
-    "name": "abnormality",
-    "access": false,
-    "other": false,
-    "values": [{
-            "label": "Identified",
-            "value": "Identified",
-            "selected": false
-        },
-        {
-            "label": "Corrected",
-            "value": "Corrected",
-            "selected": false
-        }
-    ]
-}
 
 let d = [{
         "type": "date",
@@ -187,3 +136,6 @@ let d = [{
         ]
     }
 ]
+
+
+[{"type":"date","required":true,"label":"Date","className":"form-control","name":"date","access":false},{"type":"textarea","required":true,"label":"Bay/Cell","className":"form-control","name":"bay_cell","access":false,"subtype":"textarea"},{"type":"textarea","required":true,"label":"Machine Name","className":"form-control","name":"machine_name","access":false,"subtype":"textarea"},{"type":"text","required":true,"label":"In Temp","className":"form-control","name":"in_temp","access":false,"subtype":"text"},{"type":"text","required":true,"label":"Out Temp","className":"form-control","name":"out_temp","access":false,"subtype":"text"},{"type":"radio-group","required":false,"label":"Abnormality","inline":false,"name":"abnormality","access":false,"other":false,"values":[{"label":"Identified","value":"Identified","selected":false},{"label":"Corrected","value":"Corrected","selected":false}]}]
