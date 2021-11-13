@@ -64,29 +64,3 @@ $('table.display.dataTable th.editable.cloumnshow').each(function() {
     } catch (e) {}
     $(this).append(`<br><input type="text" class="search-column ${d}">`);
 });
-
-// Date
-$('.jDate').inputmask('dd/mm/yyyy', {
-    placeholder: '__/__/____'
-});
-
-/*
- * Date Function on blur and Focus in
- */
-
-$(document).on('focusin', '.jDate', function(e) {
-    $('.jDate').datetimepicker({
-        format: "dd/mm/yyyy",
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    }).on('changeDate', function(ev) {
-        var dateId = $(this).attr('id');
-        $(this).focus();
-        $(this).trigger('keyup');
-    })
-});
