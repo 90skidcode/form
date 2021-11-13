@@ -9,6 +9,8 @@ jQuery(function($) {
             "created_by": "1",
             "master_table_json": formBuilder.formData
         };
+
+        console.log
         commonAjax('database.php', 'POST', data, '', '', '', { "functionName": "success" })
     });
     $($fbEditor).formBuilder();
