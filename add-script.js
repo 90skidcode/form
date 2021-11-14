@@ -67,9 +67,9 @@ $('table.display.dataTable th.editable.cloumnshow').each(function() {
 function simpleInsert() {
     let data = {
         "list_key": "AddTable",
-        "master_table_name": removeSpacenumber("Coolant Filtrration", 9),
-        "master_form_name": "Coolant Filtrration",
-        "company_id": '9',
+        "master_table_name": removeSpacenumber("Tank Cleaning", 6),
+        "master_form_name": "Tank Cleaning",
+        "company_id": '6',
         "created_by": "1",
         "master_table_json": ''
     }
@@ -79,7 +79,10 @@ function simpleInsert() {
             short('date', 'Date'),
             short('textarea', 'Bay/Cell', 'bay_cell'),
             short('textarea', 'Machine Name'),
-            short('text', 'Done')
+            short('textarea', 'Oil Grade'),
+            short('text', 'Washing Tank'),
+            short('text', 'Remarks')
+
         ]
     );
     console.log(data);
